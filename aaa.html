@@ -1,0 +1,472 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" type="text/css" href="icon/iconfont.css">
+<style type="text/css">
+	* {
+		margin: 0;
+		padding: 0;
+		outline: 0;
+		vertical-align: baseline;
+		box-sizing: border-box;
+	}
+
+	#container {
+		position: absolute;
+    height: 100%;
+    overflow: auto;
+    left: 216px;
+    top: 0;
+	}
+
+	#container > #tab-box {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 400px;
+		height: 50px;
+		margin: 48px auto 24px;
+		background: #fff;
+		border-radius: 32px;
+		border: 1px solid #f1f1f1;
+	}
+
+	#container > #tab-box > .tab {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+    position: relative;
+    height: 100%;
+    color: #444;
+    font-size: 14px;
+	}
+
+	#container > #tab-box > .tab:hover {
+    color: #f73;
+	}
+
+	#container > #tab-box > .tab:before {
+    content: '';
+		display: block;
+		width: 1px;
+		height: 12px;
+		position: absolute;
+		top: 18px;
+		left: 0;
+		background-color: #f1f1f1;
+	}
+	
+	.actived:after {
+		position: absolute;
+		width: 50px;
+		height: 3px;
+		left: 50%;
+		bottom: 0;
+		transform: translate(-50%,0);
+		background-color: #f73;		
+		content: "";
+	}
+
+	#container > .info-box {
+    position: relative;
+    max-width: 1332px;
+    min-height: 700px;
+    margin: 0 auto;
+    margin-bottom: 0px;
+    margin-bottom: 48px;
+    border-radius: 4px;
+    background-color: #fff;
+    box-shadow: 0 1px 4px 0 rgba(0,0,0,.08);
+	}
+	
+	#container > #info-box > #user-logo {
+		display: flex;
+		align-items: center;
+		flex-direction: column;
+		width: 100%;
+		height: 100%;
+	}
+
+	#container > #info-box > #user-logo > img {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    margin: 64px 0 12px;
+    border-radius: 50%;
+    cursor: pointer;
+    overflow: hidden;
+    border: 1px solid #f1f1f1;
+  }
+
+	#container > #info-box > #user-name > p {
+		font-size: 24px;
+		color: #222;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+  }
+
+	#container > #info-box > #user-name > p > .iconfont {
+		color: #aaa
+	}
+
+  #container > #info-box > #user-name > p > .iconfont:hover {
+		color: #f73;
+  }
+	
+	#container > #info-box > #user-name > input::selection {
+    background-color: #f73;
+    color: #fff;
+  }
+
+  #container > #info-box > #user-email {
+		margin: 6px 0 14px;
+		color: #cecece;
+		font-size: 12px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+  }
+
+  #container > #info-box > #info-btn {
+		margin: 0 auto;
+		width: 80px;
+		height: 26px;
+		font-size: 12px;
+		border-radius: 13px;
+		border: 1px solid #e0e0e0;
+		cursor: pointer;
+	}
+
+  #container > #info-box > #info-btn:hover {
+		color: #f73;
+		border-color: #f73;
+	}
+
+	#container > #info-box > #info-btn > a {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		text-decoration: none;
+		color: #444;
+		line-height: 24px;
+	}
+
+	#container > #info-box > #info-btn > a:hover {
+		color: #f73;
+	}
+
+	#container > #info-box > #info-coin {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    width: 618px;
+    height: 80px;
+    margin: 32px 0 16px 0;
+    padding: 0 24px;
+    border-radius: 4px;
+    background: url(img/setting-bg.png) no-repeat;
+  }
+
+  #container > #info-box > #info-coin > #icon {
+  	display: flex;
+		align-items: center;
+  }
+
+  #container > #info-box > #info-coin > #icon > #balance {
+  	margin: 0 10px 0 15px;
+  	color: #fff;
+  	opacity: .7;
+  	font-size: 12px;
+  }
+
+	#container > #info-box > #info-coin > #icon > #charge {
+		font-size: 24px;
+		color: #fff;
+		font-weight: 700;
+		margin-top: -4px;
+	}
+	
+	#container > #info-box > #info-coin > #btn-list{
+		display: flex;
+		align-items: center;
+	}
+
+	#container > #info-box > #info-coin > #btn-list > div {
+		width: 82px;
+		height: 28px;
+		border-radius: 18px;
+		text-align: center;		
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		height: 32px;
+		line-height: 32px;
+		padding: 0 16px;
+		border-radius: 16px;
+		font-size: 14px;
+		cursor: pointer;
+	} 
+
+	#container > #info-box > #info-coin > #btn-list > #get-coin {
+		margin-right: 10px;
+		color: #f73;
+		background: #fff;
+		font-size: 12px;
+	}
+	
+	#container > #info-box > #info-coin > #btn-list > #get-coin:hover {
+		color: #f50;
+		box-shadow: 0 3px 6px rgba(200,73,0,.3);
+	}
+
+	#container > #info-box > #info-coin > #btn-list > #check-coin {
+		color: #fff;
+		border: 1px solid #fff;
+		font-size: 12px;
+	}
+	
+	#container > #info-box > #info-coin > #btn-list > #check-coin:hover {
+		background: rgba(255,255,255,.2);
+	}
+
+	#pop-bg {
+		position: fixed;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		background-color: rgba(0,0,0,.7);
+		height: 100%;
+		z-index: 1000;
+		opacity: 1;
+	}
+	#popZz {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		position: fixed;
+		overflow: auto;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;		
+		outline: 0;
+		box-sizing: border-box;
+	}
+
+	#popZz > #pop {
+		position: relative;
+		top: 0px;
+		margin: 0 auto;
+		outline: 0;
+		z-index: 1000;
+	}
+
+	#popZz > #pop > #pop-content {
+		position: relative;
+		background-color: #fff;
+		border: 0;
+		border-radius: 4px;
+		background-clip: padding-box;
+	}
+
+	#popZz > #pop > #pop-content > #pop-close {
+		position: absolute;
+		top: 26px;
+		right: 24px;
+		overflow: hidden;
+		cursor: pointer;
+		font-size: 0;
+		color: #999;
+	}
+	#pop-header {
+		border-bottom: 1px solid #e1e1e1;
+		/*padding: 14px 16px;*/
+		line-height: 1;
+	}
+	#header-text {
+		height: 64px;
+		line-height: 64px;
+		padding: 0 24px;
+	}
+	#header-title {
+		font-size: 16px;
+		color: #222;
+		font-weight: 700;
+	}
+	#header-split {
+		display: inline-block;
+		margin: 0 12px;
+		width: 1px;
+		height: 12px;
+		background: #e6e6e6;
+	}
+	#header-coin {
+		font-size: 12px;
+		color: #999;
+	}
+	#pop-body {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		padding: 25px 30px 68px;
+		font-size: 12px;
+		line-height: 1.5;
+	}
+</style>
+</head>
+<body>
+	<div id="container">
+		<div id="tab-box">
+			<div class="tab actived">帐号信息</div>
+			<div class="tab">员工管理</div>
+			<div class="tab">更多设置</div>
+		</div>
+		<div id="info-box">
+			<div id="user-logo">
+				<img src="https://picsum.photos/id/362/200/200">
+			</div>
+			<div id="user-name">
+				<p>用户名<span class="iconfont" style="font-size: 24px;" onclick="changeName()">&#xeb9f</span></p>
+			</div>
+			<div id="user-email">
+				<p>user@email.com</p>
+			</div>
+			<div id="info-btn">
+				<a href="javascript:;">修改密码</a>
+			</div>
+			<div id="info-coin">
+				<div id="icon">
+					<img src="https://kt.faisys.com/image/manage/taskCenter/setting-coin.png" class="coin-logo">
+					<p id="balance">图币余额</p>
+					<p id="charge">66</p>
+				</div>
+				<div id="btn-list">
+					<div id="get-coin">
+						获取图币
+					</div>
+					<div id="check-coin">
+						图币明细
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+<script type="text/javascript">
+	// 声明变量tab保存获取div类为tab的所有元素
+	let tab = document.getElementsByClassName('tab');
+	// 遍历所有类名为tab的元素
+	for (let item of tab) {
+		// 如果元素类含有actived属性
+		if (item.className.indexOf('actived') != -1) {
+			// 设置元素字体颜色
+			item.style.color = '#f73';
+		}
+		// 添加事件监听,点击事件
+		item.addEventListener('click', function (e) {
+			// 声明变量tabList获取点击对象父元素下的子元素
+			let tabList = e.target.parentNode.children;
+			// 遍历tabList里的所有元素
+			for (let key of tabList) {
+				// 移除tabList里的所有元素actived类
+				key.classList.remove('actived');
+				// 设置所有元素颜色为默认
+				key.style.color = '';
+			}
+			// 点击对象添加actived类
+			e.target.classList.add('actived');
+			// 设置点击对象的颜色
+			e.target.style.color = '#f73';
+		})
+	}
+
+	// 修改用户名事件
+	changeName = function () {
+		// 声明变量获取用户名标签
+		let userName = document.getElementById('user-name');
+		// 声明变量保存从用户名标签截取的用户名
+		let userNameText = userName.innerText.split('\n')[0];
+		// 将input标签写入用户名标签.值为前面获取的用户名,设置样式,并绑定input框修改事件,传递实参为修改后的参数
+		userName.innerHTML = `<input type="text"
+														value="${ userNameText }"
+														maxlength="30"
+														style="display: flex; width: 180px; height: 31px; text-align: center; border-radius: 16px; border: 1px solid #aaa; margin: 0 auto;"
+														onchange="changeNameValue(this.value)"
+												 >`;
+		// 选中输入框所有文字
+		userName.childNodes[0].select();
+		// 为body添加监听,当鼠标在输入框外点下
+		document.body.addEventListener('mouseup', function (e) {
+			if (e.target != userName.childNodes[0]) {
+			// 选中输入框所有文字
+				userName.childNodes[0].select();
+				userName.innerHTML = `<p>${ userNameText }<span class="iconfont" style="font-size: 24px;" onclick="changeName()">&#xeb9f</span></p>`;
+			} else {
+				userName.childNodes[0].select();
+			}
+		})
+		// input框修改事件,绑定形参value,接受传递来的实参
+		changeNameValue = function (value) {
+			// 写入标签
+			userName.innerHTML = `<p>${ value }<span class="iconfont" style="font-size: 24px;" onclick="changeName()">&#xeb9f</span></p>`;
+		};
+	}
+
+	// 图币明细弹框
+	// 声明变量获取图币明细按钮
+	let checkCoin = document.getElementById('check-coin');
+	// 添加监听事件,点击
+	checkCoin.addEventListener('click', function () {
+		// 声明变量保存创建的新div
+		let pop = document.createElement('div');
+		// 给新创建的div设置id属性值为pop,style中写入样式
+		pop.setAttribute('id', 'popZz');
+		pop.innerHTML = `<div id="pop-bg"></div>
+										<div id="pop" style="width: 692px;">
+											<div id="pop-content">
+												<div id="pop-close">
+													<span class="iconfont" id="close-pop">&#xec45</span>
+												</div>
+												<div id="pop-header">
+													<div id="header-text">
+														<span id="header-title">图币明细</span>
+														<div id="header-split"></div>
+														<span id="header-coin">图币余额: 66</span>
+													</div>
+												</div>
+												<div id="pop-body">
+													<div id="pop-nav">时间</div>
+													<div id="pop-nav">事件</div>
+													<div id="pop-nav">流水</div>
+												</div>
+												<div id="pop-footer">
+
+												</div>
+											</div>
+										</div>`;
+
+		// 写入body
+		document.body.appendChild(pop);
+		// 声明变量查找弹出框关闭按钮
+		let closePop = document.getElementById('close-pop');
+		// 添加监听,点击事件
+		closePop.addEventListener('click', function () {
+			// 从body移除pop
+			document.body.removeChild(pop);
+		});
+		// 为body添加监听,当鼠标在框外点下
+		document.body.addEventListener('mouseup', function () {
+			// 从body移除pop
+			document.body.removeChild(pop);
+		});
+	});
+
+</script>
+</body>
+</html>
